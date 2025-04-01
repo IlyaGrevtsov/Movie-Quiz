@@ -18,7 +18,7 @@
 		AD7AFA552836189F00399704 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7AFA542836189F00399704 /* Array+Extensions.swift */; };
 		CE259C412D9AB8710068E679 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE259C402D9AB8670068E679 /* QuizQuestion.swift */; };
 		CEE40EB52D96A27700C6B9F3 /* YS Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40EAF2D93CE7D00C6B9F3 /* YS Display-Bold.ttf */; };
-		CEE40EB62D96A27D00C6B9F3 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40EB02D93CE7D00C6B9F3 /* YS Display-Medium.ttf */; };
+		CEE40EB62D96A27D00C6B9F3 /* YS Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEE40EB02D93CE7D00C6B9F3 /* YS Display-Medium.ttf */; settings = {ASSET_TAGS = ("ys bold", ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		AD77F5732857F8810062FB14 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		AD7AFA542836189F00399704 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		CE259C402D9AB8670068E679 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
-		CEE40EAF2D93CE7D00C6B9F3 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Bold.ttf"; sourceTree = "<group>"; };
+		CEE40EAF2D93CE7D00C6B9F3 /* YS Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YS Display-Bold.ttf"; path = "MovieQuiz/Resources/MovieQuizFonts/YS Display-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		CEE40EB02D93CE7D00C6B9F3 /* YS Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YS Display-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +162,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				KnownAssetTags = (
 					ys,
+					"ys bold",
 				);
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1520;
@@ -197,9 +198,9 @@
 			files = (
 				AD1ABABE2831907F00B3E448 /* LaunchScreen.storyboard in Resources */,
 				CEE40EB52D96A27700C6B9F3 /* YS Display-Bold.ttf in Resources */,
+				CEE40EB62D96A27D00C6B9F3 /* YS Display-Medium.ttf in Resources */,
 				AD1ABABB2831907F00B3E448 /* Assets.xcassets in Resources */,
 				AD1ABAB92831907B00B3E448 /* Main.storyboard in Resources */,
-				CEE40EB62D96A27D00C6B9F3 /* YS Display-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
