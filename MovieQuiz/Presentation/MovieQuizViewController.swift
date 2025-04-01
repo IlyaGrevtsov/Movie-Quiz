@@ -6,9 +6,15 @@ final class MovieQuizViewController: UIViewController {
 
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         let currentQuestion = questions[currentQuestionIndex]
-        let givenAnswer = false
+        let givenAnsver = false
         
-        showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+        showAnswerResult(isCorrect: givenAnsver == currentQuestion.correctAnswer)
+        
+        
+        sender.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            sender.isEnabled = true
+        }
     }
     
     @IBAction private func yesButtonClicket(_ sender: UIButton)  {
@@ -17,7 +23,10 @@ final class MovieQuizViewController: UIViewController {
         
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
         
-        
+        sender.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            sender.isEnabled = true
+        }
     }
     
     @IBOutlet private weak var counterLabel: UILabel!
