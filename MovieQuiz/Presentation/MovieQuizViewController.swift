@@ -3,18 +3,13 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController {
     // MARK: - Button Action
-
+    
     @IBAction private func noButtonClicked(_ sender: UIButton) {
         let currentQuestion = questions[currentQuestionIndex]
         let givenAnsver = false
         
         showAnswerResult(isCorrect: givenAnsver == currentQuestion.correctAnswer)
-        
-        
-        sender.isEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            sender.isEnabled = true
-        }
+        disableButton(in: noButtonOutlet)
     }
     
     @IBAction private func yesButtonClicket(_ sender: UIButton)  {
@@ -22,12 +17,13 @@ final class MovieQuizViewController: UIViewController {
         let givenAnswer = true
         
         showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
-        
-        sender.isEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            sender.isEnabled = true
-        }
+        disableButton(in: yesButtonOutlet)
     }
+    
+    @IBOutlet weak var noButtonOutlet: UIButton!
+    
+    @IBOutlet weak var yesButtonOutlet: UIButton!
+    
     
     @IBOutlet private weak var counterLabel: UILabel!
     
@@ -77,9 +73,9 @@ final class MovieQuizViewController: UIViewController {
             image: "Vivarium",
             text: "Рейтинг этого фильма больше чем 6?",
             correctAnswer: false),
-    
+        
     ]
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,12 +83,12 @@ final class MovieQuizViewController: UIViewController {
     }
     private var currentQuestionIndex = 0
     private var correctAnswer = 0
- 
+    
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
-      let questionStep = QuizStepViewModel(
-        image: UIImage(named: model.image) ?? UIImage(),
-        question: model.text,
-        questionNumber: "\(currentQuestionIndex + 1)/\(questions.count)")
+        let questionStep = QuizStepViewModel(
+            image: UIImage(named: model.image) ?? UIImage(),
+            question: model.text,
+            questionNumber: "\(currentQuestionIndex + 1)/\(questions.count)")
         return questionStep
     }
     private func show(quiz step: QuizStepViewModel) {
@@ -109,8 +105,8 @@ final class MovieQuizViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.showNextQuestionOrResults()
             self.imageView.layer.borderWidth = 0
-       }
-
+        }
+        
     }
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questions.count - 1 {
@@ -143,6 +139,21 @@ final class MovieQuizViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
- 
+    
+    private func disableButton(in button: UIButton) {
+        button.alpha = 0.5
+        noButtonOutlet.isEnabled = false
+        yesButtonOutlet.isEnabled = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.noButtonOutlet.isEnabled = true
+            self.yesButtonOutlet.isEnabled = true
+            button.alpha = 1
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            button.alpha = 1
+        }
+    }
 }
+
 
