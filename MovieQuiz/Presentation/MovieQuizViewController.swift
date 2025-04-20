@@ -3,7 +3,6 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController {
     
-    
     // MARK: - Button Action
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
@@ -33,14 +32,16 @@ final class MovieQuizViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     // MARK: -Variables
-    private var currentQuestionIndex = 0
-    private var correctAnswer = 0
+     var currentQuestionIndex = 0
+     var correctAnswer = 0
     
     private let questionsAmount: Int = 10
-    private var questionFactory: QuestionFactoryProtocol?
+    var questionFactory: QuestionFactoryProtocol?
     private var currentQuestion: QuizQuestion?
+    private var alertPresenter: AlertPresenter?
+  
     
-    
+        
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -50,7 +51,8 @@ final class MovieQuizViewController: UIViewController {
         self.questionFactory = questionFactory
         questionFactory.requestNextQuestion()
         
-    }
+        alertPresenter = AlertPresenter(viewController: self)
+            }
     // MARK: - Function
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
@@ -79,36 +81,25 @@ final class MovieQuizViewController: UIViewController {
         }
         
     }
+    
     private func showNextQuestionOrResults() {
         if currentQuestionIndex == questionsAmount - 1 {
-            show(quiz: QuizResultViewModel(title: "Этот раунд окончен!",
-                                           text: "Ваш результат: \(correctAnswer)/\(currentQuestionIndex + 1)",
-                                           buttonText: "Сыграть еще раз"))
-        } else {
+            guard let alertPresenter else { return }
+            alertPresenter.show(data: AlertModel(title: "Этот раунд окончен!",
+                                                 message: "Ваш результат: \(correctAnswer)/\(currentQuestionIndex + 1)",
+                                                 buttonText: "Сыграть еще раз") { [weak self] in
+                guard let self else { return }
+                self.currentQuestionIndex = 0
+                self.correctAnswer = 0
+                self.questionFactory?.requestNextQuestion()
+            }
+        )} else {
             currentQuestionIndex += 1
             self.questionFactory?.requestNextQuestion()
             
         }
     }
-    func show (quiz result: QuizResultViewModel) {
-        let alert = UIAlertController(
-            title: result.title,
-            message: result.text,
-            preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: result.buttonText, style: .default) {[weak self] _ in
-            guard let self else {return}
-            
-            self.currentQuestionIndex = 0
-            self.correctAnswer = 0
-            
-            questionFactory?.requestNextQuestion()
-        }
-        alert.addAction(action)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+ 
     private func disableButton(in button: UIButton) {
         button.alpha = 0.5
         noButtonOutlet.isEnabled = false
@@ -140,5 +131,6 @@ extension MovieQuizViewController: QuestionFactoryDelegate {
         }
     }
 }
+
 
 
