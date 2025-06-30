@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kzj-Fn-FAX">
-                                <rect key="frame" x="20" y="58" width="374" height="804"/>
+                                <rect key="frame" x="20" y="106" width="374" height="722"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qu6-dr-HXD">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="25.5"/>
@@ -50,13 +50,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг этого фильма меньше, чем 5?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bP-uG-ygH" userLabel="Question Label">
-                                        <rect key="frame" x="0.0" y="626.5" width="374" height="97.5"/>
+                                        <rect key="frame" x="0.0" y="626.5" width="374" height="15.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <color key="textColor" name="YP White"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Jsx-qK-LjJ">
-                                        <rect key="frame" x="0.0" y="744" width="374" height="60"/>
+                                        <rect key="frame" x="0.0" y="662" width="374" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr3-UV-iP7" userLabel="No Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="60"/>
@@ -101,17 +101,23 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="y7v-mk-nNQ">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstItem="kzj-Fn-FAX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8TC-rq-mLf"/>
+                            <constraint firstItem="y7v-mk-nNQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CPN-cS-KFx"/>
                             <constraint firstItem="kzj-Fn-FAX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KNH-y9-civ"/>
+                            <constraint firstItem="y7v-mk-nNQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P8Z-Dv-lH7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kzj-Fn-FAX" secondAttribute="trailing" constant="20" id="TQr-4t-ae7"/>
                             <constraint firstItem="kzj-Fn-FAX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="XgG-B3-syO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="y7v-mk-nNQ" id="9Xe-DF-161"/>
                         <outlet property="counterLabel" destination="Uvi-hs-a2i" id="5PO-BZ-t4Q"/>
                         <outlet property="imageView" destination="u4K-NN-oHt" id="K68-13-TaL"/>
                         <outlet property="noButtonOutlet" destination="nr3-UV-iP7" id="Zcs-7p-gMs"/>
